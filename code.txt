@@ -1,0 +1,53 @@
+// import React from 'react'
+
+// function Input({ fieldName, type, value, onChange, options }) {
+//     switch (type) {
+//         case 'text':
+//         case 'email':
+//         case 'number':
+//             return (
+//                 <>
+//                     <label className='mb-3' >{fieldName}</label>
+//                     <input
+//                         className='form-control'
+//                         type={type}
+//                         name={fieldName}
+//                         value={value}
+//                         onChange={onChange}
+//                     />
+//                 </>
+
+//             );
+//         case 'select':
+//             return (
+//                 <>
+//                     <label className='mb-2'>Gender</label>
+//                     <select className='form-control' name={fieldName} value={value} onChange={onChange}>
+//                         <option value="">Select Gender</option>
+//                         {options.map((option, index) => (
+//                             <option key={index} value={option}>
+//                                 {option}
+//                             </option>
+//                         ))}
+//                     </select>
+//                 </>
+//             );
+//         case 'multiline':
+//             return (
+//                 <>
+//                     <label className='mb-2'>{fieldName}</label>
+//                     <textarea
+//                         className='form-control'
+//                         name={fieldName}
+//                         value={value}
+//                         onChange={onChange}
+//                     />
+//                 </>
+//             );
+//         default:
+//             return null;
+//     }
+// };
+
+// export default Input   
+
