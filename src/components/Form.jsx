@@ -2,27 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData, postData } from '../redux/slice'
 import Input from '../common/Input'
+import Loader from '../common/Loader'
 
 function Form() {
     const { data, loading, responseData, success } = useSelector((state) => state.form)
-    console.log(data, "data")
-    console.log(success, "success")
+    // console.log(data, "data")
+    // console.log(success, "success")
     const [formData, setFormData] = useState({})
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getData())
     }, [dispatch])
     useEffect(() => {
-        if (data && data.length > 0) {
-            // const initialFormData = data.reduce((acc, field) => {
-            //     // console.log("field:" , field)
-            //     acc[field.fieldName] = field.value;
-            //     // console.log(acc, "acc")
-            //     return acc;
-            // }, {});
-            // console.log("initialFormData", initialFormData)
-
-            // second way forEach
+        if (data.length > 0) {
+            // forEach
             const initialFormData = {}
             data.forEach((ele) => {
                 initialFormData[ele.fieldName] = ele.value
@@ -31,7 +24,7 @@ function Form() {
         }
     }, [data]);
 
- 
+    // Handle input change Functionality
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -40,6 +33,8 @@ function Form() {
         }))
     }
     // console.log(formData ,"formData")
+    
+    // Handle Submit Functionality
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(formData, "formData in handle submit")
@@ -48,7 +43,8 @@ function Form() {
     return (
         <>
             {loading ? (
-                <h4 className='text-center'>Loading...</h4>
+                // <h4 className='text-center'>Loading...</h4>
+                <Loader />
             ) : (
                 <>
                     <h5 className='text-center mt-3'>Dynamic Form</h5>

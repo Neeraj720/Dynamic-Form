@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 function Input({ name, type, value, options, onChange }) {
     console.log("value:", value)
