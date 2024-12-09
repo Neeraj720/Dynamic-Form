@@ -1,53 +1,53 @@
-// import React from 'react'
+*************************************************** Using Reduce ***************************************************** 
+const validationSchema = Yup.object().shape(
+        data.reduce((acc, ele) => {
+            if (ele.type == "text") {
+                acc[ele.fieldName] = Yup.string().required(`${ele.fieldName} is required`)
+            }
+            else if(ele.type == "email"){
+                acc[ele.fieldName] = Yup.string().email().required(`${ele.fieldName} is required`)
+            }
+            else if(ele.type == "number"){
+                acc[ele.fieldName] = Yup.number().positive(`${ele.fieldName} Should be positive`).required(`${ele.fieldName} is required`)
+            }
+            else if(ele.type == "select"){
+                acc[ele.fieldName] = Yup.string().required(`${ele.fieldName} is required`)
+            }
+            else if(ele.type == "multiline"){
+                acc[ele.fieldName] = Yup.string().required(`${ele.fieldName} is required`)
+            }
+            // console.log(acc , "acuuu............")
+            return acc
+        }, {})
+    )
+*********************************************Finish****************************************************************
 
-// function Input({ fieldName, type, value, onChange, options }) {
-//     switch (type) {
-//         case 'text':
-//         case 'email':
-//         case 'number':
-//             return (
-//                 <>
-//                     <label className='mb-3' >{fieldName}</label>
-//                     <input
-//                         className='form-control'
-//                         type={type}
-//                         name={fieldName}
-//                         value={value}
-//                         onChange={onChange}
-//                     />
-//                 </>
+************************************************Using ForEach******************************************************
 
-//             );
-//         case 'select':
-//             return (
-//                 <>
-//                     <label className='mb-2'>Gender</label>
-//                     <select className='form-control' name={fieldName} value={value} onChange={onChange}>
-//                         <option value="">Select Gender</option>
-//                         {options.map((option, index) => (
-//                             <option key={index} value={option}>
-//                                 {option}
-//                             </option>
-//                         ))}
-//                     </select>
-//                 </>
-//             );
-//         case 'multiline':
-//             return (
-//                 <>
-//                     <label className='mb-2'>{fieldName}</label>
-//                     <textarea
-//                         className='form-control'
-//                         name={fieldName}
-//                         value={value}
-//                         onChange={onChange}
-//                     />
-//                 </>
-//             );
-//         default:
-//             return null;
-//     }
-// };
+ const [schema, setSchema] = useState({})
+    useEffect(() => {
+        if (data.length > 0) {
+            const validationSchema = {}
+            data.forEach((ele) => {
+                if (ele.type == "text") {
+                    validationSchema[ele.fieldName] = Yup.string().required(`${ele.fieldName} is required`)
+                }
+                else if (ele.type == "email") {
+                    validationSchema[ele.fieldName] = Yup.string().email().required(`${ele.fieldName} is required`)
+                }
+                else if (ele.type == "number") {
+                    validationSchema[ele.fieldName] = Yup.number().positive().required(`${ele.fieldName} is required`)
+                }
+                else if (ele.type == "select") {
+                    validationSchema[ele.fieldName] = Yup.string().required(`${ele.fieldName} is required`)
+                }
+                else if (ele.type == "multiline") {
+                    validationSchema[ele.fieldName] = Yup.string().required(`${ele.fieldName} is required`)
+                }
+                setSchema(validationSchema)
+            })
+        }
 
-// export default Input   
+    }, [data])
 
+************************************************Finish******************************************************************
