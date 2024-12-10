@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-function Input({ name, type, value, options, onChange, onKeyDown }) {
+function Input({ name, type, value, options, onChange }) {
     // console.log("value:", value)
     if (type == "text" || type == "email" || type == "number") {
         return (
@@ -11,7 +11,7 @@ function Input({ name, type, value, options, onChange, onKeyDown }) {
                     name={name}
                     value={value}
                     onChange={onChange}
-                    onKeyDown={onKeyDown}
+                    // onKeyDown={onKeyDown}
                 // required
                 />
             </>
@@ -21,7 +21,6 @@ function Input({ name, type, value, options, onChange, onKeyDown }) {
         return (
             <>
                 <label className='mb-1 mt-1'>{name}</label>
-
                 <select className='form-control' name={name} value={value} onChange={onChange} >
                     {options.map((option, index) => (
                         <option key={index} value={option}>
@@ -43,7 +42,7 @@ function Input({ name, type, value, options, onChange, onKeyDown }) {
                     onChange={onChange}
                     cols={10}
                     rows={5}
-                    onKeyDown={onKeyDown}
+                    // onKeyDown={onKeyDown}
                 />
             </>
         )
