@@ -1,27 +1,29 @@
-import React, { useState } from 'react'
+import React from "react";
 function Input({ name, type, value, options, onChange }) {
     // console.log("value:", value)
     if (type == "text" || type == "email" || type == "number") {
         return (
             <>
-                <label className='mb-1 mt-1'>{name}</label>
+                <label className="mb-1 mt-1">{name}</label>
                 <input
-                    className='form-control'
+                    className="form-control"
                     type={type}
                     name={name}
                     value={value}
                     onChange={onChange}
-                    // onKeyDown={onKeyDown}
-                // required
                 />
             </>
-        )
-    }
-    else if (type == "select") {
+        );
+    } else if (type == "select") {
         return (
             <>
-                <label className='mb-1 mt-1'>{name}</label>
-                <select className='form-control' name={name} value={value} onChange={onChange} >
+                <label className="mb-1 mt-1">{name}</label>
+                <select
+                    className="form-control"
+                    name={name}
+                    value={value}
+                    onChange={onChange}
+                >
                     {options.map((option, index) => (
                         <option key={index} value={option}>
                             {option}
@@ -29,25 +31,22 @@ function Input({ name, type, value, options, onChange }) {
                     ))}
                 </select>
             </>
-        )
-    }
-    else if (type == "multiline") {
+        );
+    } else if (type == "multiline") {
         return (
             <>
-                <label className='mb-1 mt-1'>{name}</label>
+                <label className="mb-1 mt-1">{name}</label>
                 <textarea
-                    className='form-control'
+                    className="form-control"
                     name={name}
                     value={value}
                     onChange={onChange}
                     cols={10}
                     rows={5}
-                    // onKeyDown={onKeyDown}
                 />
             </>
-        )
+        );
     }
-
 }
 
-export default Input
+export default Input;

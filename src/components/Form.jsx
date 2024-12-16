@@ -9,7 +9,7 @@ function Form() {
   const { data, loading, responseData, success, error, message } = useSelector(
     (state) => state.form
   );
-//   console.log(data, "data");
+  //   console.log(data, "data");
   // console.log(message, "message")
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function Form() {
     }
   }, [data]);
   // validation schema
-  const createValidate = (data) => {
+  const createValidation = (data) => {
     const initialSchema = {};
     if (data.length > 0) {
       for (let ele of data) {
@@ -53,22 +53,22 @@ function Form() {
       return initialSchema;
     }
   };
-  const validate = createValidate(data);
+  const validateSchema = createValidation(data);
   // formik and yup
   const formik = useFormik({
     // when we update a form
     enableReinitialize: true,
     initialValues: formData,
-    validationSchema: Yup.object(validate),
+    validationSchema: Yup.object(validateSchema),
     onSubmit: (values) => {
       dispatch(postData(values));
     },
   });
+  console.log("commit")
   // user can't enter space in input field
   // const onKeyDown = (event) => {
   //     if (event.code === 'Space') event.preventDefault()
   // }
-
   // check errors
   useEffect(() => {
     if (error && message) {
@@ -99,7 +99,7 @@ function Form() {
                         value={formik.values[input.fieldName]}
                         options={input.options}
                         onChange={formik.handleChange}
-                        // onKeyDown={onKeyDown}
+                      // onKeyDown={onKeyDown}
                       />
                       {formik.touched[input.fieldName] &&
                         formik.errors[input.fieldName] && (
